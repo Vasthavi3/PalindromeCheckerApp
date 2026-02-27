@@ -1,6 +1,4 @@
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
@@ -12,27 +10,29 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println();
 
-        // UC6 – Queue + Stack Based Palindrome Check
+        // UC8 – LinkedList Based Palindrome Check
 
         String word = "madam";
 
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        LinkedList<Character> list = new LinkedList<>();
 
-        // Add characters to both stack and queue
+        // Add characters to LinkedList
         for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
-            queue.add(word.charAt(i));
+            list.add(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare elements
-        while (!stack.isEmpty()) {
-            if (!stack.pop().equals(queue.remove())) {
+        int start = 0;
+        int end = list.size() - 1;
+
+        while (start < end) {
+            if (!list.get(start).equals(list.get(end))) {
                 isPalindrome = false;
                 break;
             }
+            start++;
+            end--;
         }
 
         if (isPalindrome) {
