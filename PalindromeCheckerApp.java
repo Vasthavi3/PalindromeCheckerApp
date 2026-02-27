@@ -10,7 +10,13 @@ public class PalindromeCheckerApp {
         System.out.println("Developed by : Vasthavi");
         System.out.println();
 
-        System.out.println("Welcome to the Palindrome Checker Application!");
-        System.out.println("Application Started Successfully!");
+        // UC2 - Hardcoded Palindrome
+        String word = "madam";
+
+        if (word.equals(new StringBuilder(word).reverse().toString())) {
+            System.out.println(word + " is a Palindrome");
+        } else {
+            System.out.println(word + " is NOT a Palindrome");
+        }
     }
 }
