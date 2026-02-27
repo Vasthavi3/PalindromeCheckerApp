@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
@@ -10,35 +8,33 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println();
 
-        // UC8 – LinkedList Based Palindrome Check
+        // UC9 – Recursive Palindrome Check
 
         String word = "madam";
 
-        LinkedList<Character> list = new LinkedList<>();
+        boolean result = isPalindrome(word, 0, word.length() - 1);
 
-        // Add characters to LinkedList
-        for (char ch : word.toCharArray()) {
-            list.add(ch);
-        }
-
-        boolean isPalindrome = true;
-
-        int start = 0;
-        int end = list.size() - 1;
-
-        while (start < end) {
-            if (!list.get(start).equals(list.get(end))) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-        if (isPalindrome) {
+        if (result) {
             System.out.println(word + " is a Palindrome");
         } else {
             System.out.println(word + " is NOT a Palindrome");
         }
+    }
+
+    // Recursive Method
+    public static boolean isPalindrome(String str, int start, int end) {
+
+        // Base condition
+        if (start >= end) {
+            return true;
+        }
+
+        // If mismatch
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call
+        return isPalindrome(str, start + 1, end - 1);
     }
 }
