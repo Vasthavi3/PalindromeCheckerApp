@@ -1,3 +1,4 @@
+import java.util.Deque;
 import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
@@ -10,29 +11,23 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println();
 
-        // UC8 – LinkedList Based Palindrome Check
+        // UC7 – Deque Based Palindrome Check
 
         String word = "madam";
 
-        LinkedList<Character> list = new LinkedList<>();
+        Deque<Character> deque = new LinkedList<>();
 
-        // Add characters to LinkedList
-        for (int i = 0; i < word.length(); i++) {
-            list.add(word.charAt(i));
+        for (char ch : word.toCharArray()) {
+            deque.addLast(ch);
         }
 
         boolean isPalindrome = true;
 
-        int start = 0;
-        int end = list.size() - 1;
-
-        while (start < end) {
-            if (!list.get(start).equals(list.get(end))) {
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         if (isPalindrome) {
