@@ -8,28 +8,14 @@ public class PalindromeCheckerApp {
         System.out.println("Version : 1.0");
         System.out.println();
 
-        // UC10 – Case-Insensitive & Space-Ignored Check
-
         String input = "A man a plan a canal Panama";
 
-        // Normalize string
-        String word = input.toLowerCase().replaceAll(" ", "");
+        // Create object of service class
+        PalindromeService service = new PalindromeService();
 
-        boolean isPalindrome = true;
+        boolean result = service.checkPalindrome(input);
 
-        int start = 0;
-        int end = word.length() - 1;
-
-        while (start < end) {
-            if (word.charAt(start) != word.charAt(end)) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-        if (isPalindrome) {
+        if (result) {
             System.out.println("\"" + input + "\" is a Palindrome");
         } else {
             System.out.println("\"" + input + "\" is NOT a Palindrome");
